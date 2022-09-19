@@ -14,7 +14,7 @@ Navaigate to fasta_file_creator directory, then run the following:
 ```
 pip install .
 ```
-## Function arguments
+## Command line arguments
 ```
 create_pw2_fasta --help
 
