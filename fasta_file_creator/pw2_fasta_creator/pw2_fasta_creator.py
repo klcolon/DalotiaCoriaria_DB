@@ -72,16 +72,16 @@ class pw2_fasta:
                     f" transcript_biotype:{biotype} gene_symbol:{genenames[i]}_{record} \n")
                     f.write(seq + "\n")
                     record += 1
-                    prev = seq
-                elif seq == prev:
+                    prev = genenames[i]
+                elif genenames[i] == prev:
                     f.write(f">{genenames[i]}_{record} dna gene:{genenames[i]}_{record}" \
                     f" gene_biotype:{biotype}" \
                     f" transcript_biotype:{biotype} gene_symbol:{genenames[i]}_{record} \n")
                     f.write(seq + "\n")
                     record += 1
-                elif seq != prev:
+                elif genenames[i] != prev:
                     record = 0 
-                    prev = seq
+                    prev = genenames[i]
                     f.write(f">{genenames[i]}_{record} dna gene:{genenames[i]}_{record}" \
                     f" gene_biotype:{biotype}" \
                     f" transcript_biotype:{biotype} gene_symbol:{genenames[i]}_{record} \n")
