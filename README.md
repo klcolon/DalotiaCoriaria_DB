@@ -21,7 +21,7 @@ create_pw2_fasta --help
 Options:
   -f, --fasta TEXT      FASTA File of organism cDNA
   -b, --bed TEXT        BED file containing genomic coordinates
-  -gf, --gff TEXT       gff file of organism  [required]
+  -gf, --gff TEXT       gff file of organism  
   -bio, --biotype TEXT  what type of molecule is this? (ex.introns or exons)
                         [required]
 
