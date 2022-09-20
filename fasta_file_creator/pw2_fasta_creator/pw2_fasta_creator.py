@@ -152,7 +152,7 @@ class pw2_fasta:
 @click.command()
 @click.option('--fasta','-f', "fasta", help='FASTA File of organism cDNA',required=False, type=str)
 @click.option('--bed','-b', "bed",help='BED file containing genomic coordinates', required=False, type=str)
-@click.option('--gff','-gf', "gff", help='gff file of organism', required=True, type=str)
+@click.option('--gff','-gf', "gff", help='gff file of organism', required=False, type=str)
 @click.option('--biotype','-bio', "biotype",help='what type of molecule is this? (ex.introns or exons)', required=True, type=str)
 @click.option('--sequences','-s', "sequences",help='Probe sequence csv file', required=False, type=str, default="")
 @click.option('--genenames','-g', "genenames",help='Gene names csv file for probe sequences', required=False, type=str)
@@ -166,7 +166,7 @@ def main(fasta, bed, gff, biotype, sequences, genenames, filename):
         pw2f.generate_probe_fasta(filename, biotype)
     else:
         print("Creating FASTA file...")
-        sequences = pd.read_csv(sequences, header=None).values.tolist()
+        sequences = pd.read_csv(sequences, header=None)[0].values.tolist()
         genenames = pd.read_csv(genenames, header=None)[0].values.tolist()
         pw2_fasta.create_fasta(filename, sequences, genenames, biotype)
     
