@@ -1,4 +1,4 @@
-<img src="https://github.com/klcolon/DalotiaCoriaria_DB/blob/main/icon/beetle.png" alt="beetle icon" width="400" height="200">
+<img src="https://github.com/klcolon/DalotiaCoriaria_DB/blob/main/icon/beetle.png" alt="beetle icon" width="300" height="300">
 
 # Create mRNA FASTA file for Dalotia coriaria
 This command line interface package can be used to create exon, intron, or full-lenth mRNA FASTA files for designing \
