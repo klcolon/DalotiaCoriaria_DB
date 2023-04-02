@@ -1,6 +1,6 @@
-# Create mRNA FASTA from genome assembly and BED files
-This command line interface package can be used to create exon or intron FASTA files for designing \
-fluorescent in situ hybridization (FISH) probes or for other genomic purposes.
+# Create mRNA FASTA file for Dalotia coriaria
+This command line interface package can be used to create exon, intron, or full-lenth mRNA FASTA files for designing \
+fluorescent in situ hybridization (FISH) probes for Dalotia coriaria.
 
 ## Dependencies 
 - python >= 3.7.0
