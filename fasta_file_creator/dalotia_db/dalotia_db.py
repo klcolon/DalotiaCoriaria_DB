@@ -1,12 +1,12 @@
-import pandas as pd
-import numpy as np
-from Bio.Seq import Seq
+import pandas  as     pd
+import numpy   as     np
+from   Bio.Seq import Seq
 
 class dalotia_db:
     def __init__(self, fasta, gff, bed=None):
         self.fasta = fasta
-        self.bed = bed
-        self.gff = gff
+        self.bed   = bed
+        self.gff   = gff
 
     def generate_fasta_df(self):
         """
@@ -15,8 +15,8 @@ class dalotia_db:
         _list = []
         with open(self.fasta, "r") as f:
             temp_gene = []
-            temp_seq = []
-            line = "init"
+            temp_seq  = []
+            line      = "init"
             while line != "":
                 line = f.readline()
                 if ">" in line and temp_gene == []:
@@ -25,7 +25,7 @@ class dalotia_db:
                     temp_seq = ["".join(temp_seq)]
                     _list.append(temp_gene + temp_seq)
                     temp_gene = []
-                    temp_seq = []
+                    temp_seq  = []
                     temp_gene.append(line[1:].replace("\n",""))
                 elif line == "":
                     temp_seq = ["".join(temp_seq)]
@@ -78,19 +78,19 @@ class dalotia_db:
         f.close()
 
         
-    def generate_probe_fasta(self, filename, biotype):
+    def generate_probe_fasta(self, filename, biotype, genelist_path = ""):
         
         """
         Use df generated from fasta to cut out sequences based on bed and gff file.
         """
         #create df for fasta, bed and gff file
         df_fasta = dalotia_db.generate_fasta_df(self)
-        df_bed = dalotia_db.generate_bed_df(self)
-        df_gff = dalotia_db.generate_gff_df(self)
+        df_bed   = dalotia_db.generate_bed_df(self)
+        df_gff   = dalotia_db.generate_gff_df(self)
         
         #add extra info to df bed file regarding strand orientation and actual gene name
         strand_info = []
-        name = []
+        name        = []
         if biotype == "introns":
             print("Generating intron fasta sequences")
             assert type(self.bed) != type(None), 'Missing BED file'
@@ -134,43 +134,46 @@ class dalotia_db:
                     name.append([id_, product])
                 else:
                     name.append([id_, 'NA'])
-            
+        
         if biotype != 'mRNA':     
-            df_bed.loc["Strand"] = strand_info
-            df_bed.loc["id"] = np.array(name)[:, 0]
+            df_bed.loc["Strand"]  = strand_info
+            df_bed.loc["id"]      = np.array(name)[:, 0]
             df_bed.loc["product"] = np.array(name)[:, 1]
         else:
-            df_bed = df_gff[['Gene','Start', 'End','Strand']].copy()
-            df_bed["id"] = np.array(name)[:, 0]
+            df_bed            = df_gff[['Gene','Start', 'End','Strand']].copy()
+            df_bed["id"]      = np.array(name)[:, 0]
             df_bed["product"] = np.array(name)[:, 1]
         
+        if genelist_path != "":
+            genelist = pd.read_csv(genelist_path, header=None)[0].values.tolist()
+            df_bed   = df_bed[df_bed.id.isin(genelist)].reset_index(drop=True)
+
         #isolate sequences based on bed file
         gene_sequence_final = []
         for i in range(len(df_bed)):
             #grab all info regarding gene product
-            gene_name = df_bed.iloc[i].Gene
-            gene_start = df_bed.iloc[i].Start
-            gene_end = df_bed.iloc[i].End
+            gene_name        = df_bed.iloc[i].Gene
+            gene_start       = df_bed.iloc[i].Start
+            gene_end         = df_bed.iloc[i].End
             gene_orientation = df_bed.iloc[i].Strand   
-            gene_seq = df_fasta[df_fasta["Gene"] == gene_name].Sequence.iloc[0]
+            gene_seq         = df_fasta[df_fasta["Gene"] == gene_name].Sequence.iloc[0]
             #cut fragment while accounting for python indexing
-            gene_fragment = gene_seq[gene_start-1:gene_end-1]
+            gene_fragment    = gene_seq[gene_start-1:gene_end-1]
             #if the anti sense strand is read, then take reverse complement 
             if gene_orientation == "-":
                 gene_fragment = str(Seq(gene_fragment).reverse_complement())
             gene_sequence_final.append(gene_fragment)
             
         dalotia_db.create_fasta(filename, gene_sequence_final, 
-                               df_bed["id"].values.tolist(), df_bed["product"].values.tolist(), biotype)
+                                 df_bed["id"].values.tolist(),
+                                 df_bed["product"].values.tolist(), biotype)
 
-#overall wrapper function
-def main(fasta, gff, biotype, filename, bed=None):
-    if not filename:
-        print('Filename cannot be empty')
-        return
+#overall wrapper 
+def main(fasta, gff, biotype, genelist_path, bed = None, filename = ""):
+    assert filename != "", "Add filename."
     print("Creating FASTA file...")
-    ddb = dalotia_db(fasta = fasta, gff=gff, bed=bed)
-    ddb.generate_probe_fasta(filename, biotype)
+    ddb = dalotia_db(fasta = fasta, gff = gff, bed = bed)
+    ddb.generate_probe_fasta(filename, biotype, genelist_path)
     print('FASTA file created.')
     
 if __name__ == '__main__':
