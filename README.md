@@ -1,5 +1,7 @@
 # Welcome to Dalotia Coriaria DB
+<p align="center">
 <img src="https://github.com/klcolon/DalotiaCoriaria_DB/blob/main/icon/beetle.png" alt="beetle icon" width="200" height="200">
+</p>
 
 ## Create mRNA FASTA file for Dalotia coriaria to be fed into probe generator
 This app interfaces with probe wizard 2.0 for designing fluorescent in situ hybridization (FISH) probes for Dalotia coriaria. Probes targeting exonic, intronic, or whole mRNA can be generated using this app. Probe wizard 2.0 is a propriety app of Cai Lab at Caltech.
