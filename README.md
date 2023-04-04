@@ -3,11 +3,11 @@
 <img src="https://github.com/klcolon/DalotiaCoriaria_DB/blob/main/icon/beetle.png" alt="beetle icon" width="200" height="200">
 </p>
 
-## Create mRNA FASTA file from Dalotia coriaria genome to be fed into probe generator
-This app is used to generate mRNA fasta files to be fed into probe wizard 2.0 for designing fluorescent in situ hybridization (FISH) probes for Dalotia coriaria. Probes targeting exonic, intronic, or whole mRNA can be generated using this app. Probe wizard 2.0 is a propriety app of Cai Lab at Caltech.
+## Create mRNA FASTA file from Dalotia coriaria genome to be fed into Probe Wizard 2.0
+This app is used to generate mRNA fasta files that will be used as input for probe wizard 2.0 in designing fluorescent in situ hybridization (FISH) probes from Dalotia coriaria genome. Probes targeting exonic, intronic, or whole mRNA can be generated using this app. Probe wizard 2.0 is a propriety app of Cai Lab at Caltech.
 
-## Open GUI
-There is an executable app available in 'fasta_file_creator/dist/app' for easy use. 
+## Make an executable app
+Install pyinstaller `pip install pyinstaller`.
 
 ## Dependencies 
 - python >= 3.7.0
