@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Dalotia Coriaria DB
+Comment=GUI to generate mRNA FASTA and BLAST final probes
+Version=1.0
+Icon=/home/klcolon/git/DalotiaCoriaria_DB/icon/beetle.png
+Exec=/home/klcolon/git/DalotiaCoriaria_DB/dalotia_db.sh
+Type=Application
+Terminal=true
+Encoding=UTF-8
+Categories=Genomics
