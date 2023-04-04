@@ -25,7 +25,7 @@ This app is used to generate mRNA fasta files that will be used as input for pro
 2) Run the following to open the app `python3 DalotiaCoriariaDB.py`
 
 ## How to use this app?
-1) Load FASTA file, GFF file, and your desired gene list as a CSV file.
+1) Load FASTA file, GFF file, and your desired gene list as a CSV file. For gene to protein reference, go to `Reference_DB/geneid_to_protein.csv`.
 2) Select desired Biotype ('mRNA', 'exons', 'introns'). If you choose 'exons' or 'introns' then a BED file must be provided. If you choose 'mRNA' then it will use the entire strand.
 3) Click the Generate Fasta button. A window will open to define where you wish to save the outputs.
 4) Once the FASTA file is created, feed it into Probe Wizard 2.0 using your desired settings.
