@@ -18,7 +18,7 @@ class Application(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        self.fasta_label = tk.Label(self, text="Fasta File:")
+        self.fasta_label = tk.Label(self, text="FASTA File:")
         self.fasta_label.grid(row=0, column=0)
         self.fasta_entry = tk.Entry(self)
         self.fasta_entry.grid(row=0, column=1)
@@ -50,7 +50,7 @@ class Application(tk.Frame):
         self.probes_entry = tk.Entry(self)
         self.probes_entry.grid(row=5, column=1)
 
-        self.select_fasta_file_button = tk.Button(self, text="Select Fasta File", command=self.select_fasta_file)
+        self.select_fasta_file_button = tk.Button(self, text="Select FASTA File", command=self.select_fasta_file)
         self.select_fasta_file_button.grid(row=0, column=2)
 
         self.select_gff_file_button = tk.Button(self, text="Select GFF File", command=self.select_gff_file)
@@ -62,7 +62,7 @@ class Application(tk.Frame):
         self.select_genelist_file_button = tk.Button(self, text="Select Probes List File", command=self.select_probes_file)
         self.select_genelist_file_button.grid(row=5, column=2)
 
-        self.generate_button = tk.Button(self, text="Generate Fasta", command=self.generate_fasta)
+        self.generate_button = tk.Button(self, text="Generate FASTA", command=self.generate_fasta)
         self.generate_button.grid(row=7, column=0)
 
         self.generate_button = tk.Button(self, text="BLAST", command=self.blast_probes)
@@ -119,7 +119,7 @@ class Application(tk.Frame):
         if filename:
             main(fasta_file, gff_file, biotype, genelist_file, bed_file, filename)
             # show a dialog box with a message when finished
-            messagebox.showinfo("Finished", "Fasta file generated successfully!")
+            messagebox.showinfo("Finished", "FASTA file generated successfully!")
     
     def blast_probes(self):
         probes_file = self.probes_entry.get()
