@@ -27,3 +27,5 @@ This app is used to generate mRNA fasta files that will be used as input for pro
 4) Once the FASTA file is created, feed it into Probe Wizard 2.0 using your desired settings.
 5) After probe genereration, open the app again load the probes list.
 6) Click the BLAST button and you will get your final probes list.
+
+Link: https://github.com/klcolon/DalotiaCoriaria_DB
