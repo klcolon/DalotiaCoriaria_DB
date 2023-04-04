@@ -17,7 +17,7 @@ This app is used to generate mRNA fasta files that will be used as input for pro
 3) If you have a linux system, the --icon flag will not work. Instead, edit the paths in the provided dalotia_db.sh and dalotia.desktop files. The .desktop file should be placed into `~/.local/share/applications/` directory.
 
 <p align="center">
-<img src="https://github.com/klcolon/DalotiaCoriaria_DB/blob/main/icon/gui.png" alt="gui" width="400" height="200">
+<img src="https://github.com/klcolon/DalotiaCoriaria_DB/blob/main/icon/gui.png" alt="gui" width="600" height="200">
 </p>
 
 ## Run DalotiaCoriariaDB.py script 
