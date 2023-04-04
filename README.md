@@ -13,7 +13,7 @@ This app is used to generate mRNA fasta files that will be used as input for pro
 
 ## Make an executable app
 1) Install pyinstaller `pip install pyinstaller`.
-2) Go to DC_DB_Parser directory and run the following `pyinstaller --icon=../icon/beetle.png --onefile DalotiaCoriariaDB.py`. This will create the app which should be compatible with most OS.
+2) Go to DC_DB_Parser directory and run the following ```pyinstaller --icon=../icon/beetle.png --onefile DalotiaCoriariaDB.py```. This will create the app which should be compatible with most OS.
 3) If you have a linux system, the --icon flag will not work. Instead, edit the paths in the provided dalotia_db.sh and dalotia.desktop files. The .desktop file should be placed into `~/.local/share/applications/` directory.
 
 ## Run DalotiaCoriariaDB.py script 
